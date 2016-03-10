@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ object.name }}</h2>
+
+<p>Intention: {{ object.action }}</p>
+
+<h3>Beschreibung</h3>
+
+{% if object.description %}
+<p>{{ object.description }}</p>
+{% else %}
+Noch keine Beschreibung
+{% endif %}
+{% endblock content %}
+
