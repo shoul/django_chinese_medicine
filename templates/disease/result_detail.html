@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Befund - {{ object.spot }}: {{ object.result }}</h2>
+
+
+<h3>Zugehörige Krankheitsmuster</h3> 
+
+<ul>
+{% for diseasepattern in object.diseasepattern_set.all %}
+<li><a href="{% url 'disease_detail' diseasepattern.slug %}">{{ diseasepattern.name }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock content %}

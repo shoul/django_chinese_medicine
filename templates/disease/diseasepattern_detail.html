@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>{{ object.name }}</h2>
+
+
+<h3>Manifestation</h3> 
+
+<ul>
+{% for result in object.results.all %}
+<li>
+<a href="{% url 'result_detail' result.slug %}">
+    {{ result.spot }}: {{ result.result }}</a>
+</li>
+{% endfor %}
+</ul>
+
+<p>{{ object.manifestation }}</p>
+
+
+<h3>Pathologie</h3>
+
+<p>{{ object.pathologie }}<p/>
+
+
+<h3>Ätiologie</h3>
+
+<p>{{ object.etiologie }}<p/>
+
+{% endblock content %}

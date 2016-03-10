@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Krankheitsmuster</h2>
+<ul>
+{% for disease in object_list %}
+<li><a href="{% url 'disease_detail' disease.slug %}">{{ disease.name }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock content %}
