@@ -43,8 +43,8 @@ class DiseasePattern(models.Model):
     etiologie = models.ManyToManyField(Etiologie, blank=True)
 
     class Meta:
-        verbose_name = u'TherapieMuster'
-        verbose_name_plural = u'TherapieMuster'
+        verbose_name = u'KrankheitsMuster'
+        verbose_name_plural = u'KrankheitsMuster'
 
     def __unicode__(self):
         return self.name
@@ -54,7 +54,7 @@ class Therapie(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
     disease = models.ForeignKey(DiseasePattern, on_delete=models.CASCADE,
-        blank=True)
+        blank=True, null=True)
     description = models.TextField(blank=True, max_length=1024)
 
     class Meta:
