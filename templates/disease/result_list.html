@@ -2,12 +2,34 @@
 
 {% block content %}
 
-<h2>Befunde</h2>
+<div>
+    <h2>Befunde</h2>
 
-<ul>
-{% for result in object_list %}
-<li><a href="{% url 'result_detail' result.slug %}">
-    {{ result.spot }}: {{ result.result }}</a></li>
-{% endfor %}
-</ul>
+    <ul>
+    {% for result in object_list %}
+    <li><a href="{% url 'result_detail' result.slug %}">
+        {{ result.spot }}: {{ result.result }}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+<div>
+    <h2>Krankheitsmuster</h2>
+
+    <ul>
+    {% for disease in disease_list %}
+        <li><a href="{% url 'disease_detail' disease.slug %}">{{ disease.name }}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+<div>
+    <h2>Therapien</h2>
+    <ul>
+    {% for therapy in therapy_list %}
+        <li><a href="{% url 'therapy_detail' therapy.slug %}">
+            {{ therapy.name }}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+
+
 {% endblock content %}

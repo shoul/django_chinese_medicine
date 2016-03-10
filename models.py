@@ -37,10 +37,9 @@ class DiseasePattern(models.Model):
     slug = models.SlugField(unique=True)
     results = models.ManyToManyField(Result, blank=True)
     manifestation = models.TextField(blank=True, max_length=1024)
-    tongue = models.TextField(blank=True, max_length=1024)
-    puls = models.CharField(max_length=255)
     pathologie = models.CharField(max_length=255)
     etiologie = models.ManyToManyField(Etiologie, blank=True)
+    therapy = models.ManyToManyField('Therapy', blank=True)
 
     class Meta:
         verbose_name = u'KrankheitsMuster'
@@ -50,11 +49,10 @@ class DiseasePattern(models.Model):
         return self.name
 
 
-class Therapie(models.Model):
+class Therapy(models.Model):
     name = models.CharField(max_length=255)
+    intension = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
-    disease = models.ForeignKey(DiseasePattern, on_delete=models.CASCADE,
-        blank=True, null=True)
     description = models.TextField(blank=True, max_length=1024)
 
     class Meta:
