@@ -37,6 +37,7 @@ class DiseasePattern(models.Model):
     slug = models.SlugField(unique=True)
     results = models.ManyToManyField(Result, blank=True)
     manifestation = models.TextField(blank=True, max_length=1024)
+    # TODO: pathologie should better have a text field.
     pathologie = models.CharField(max_length=255)
     etiologie = models.ManyToManyField(Etiologie, blank=True)
     therapy = models.ManyToManyField('Therapy', blank=True)
