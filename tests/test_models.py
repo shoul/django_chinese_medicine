@@ -1,7 +1,6 @@
 import pytest
-from django_chinese_medicine.models import Result, Etiologie
-from django_chinese_medicine.factories import (ResultFactory, EtiologieFactory,
-        DiseasePatternFactory, TherapyFactory)
+from django_chinese_medicine.models import (Result, Etiologie, DiseasePattern,
+    Therapy)
 
 
 @pytest.mark.django_db
@@ -18,9 +17,9 @@ def test_etiologie(etiologie):
 
 @pytest.mark.django_db
 def test_disease_pattern(disease_pattern):
-    assert isinstance(disease_pattern, DiseasePatternFactory)
+    assert isinstance(disease_pattern, DiseasePattern)
 
 
 @pytest.mark.django_db
 def test_therapy(therapy):
-    assert isinstance(therapy, TherapyFactory)
+    assert isinstance(therapy, Therapy)
