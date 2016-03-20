@@ -5,7 +5,7 @@ fake = Faker('de_DE')
 
 import pytest
 
-from .models import Result
+from django_chinese_medicine.models import Result
 
 class TestResultModel():
 

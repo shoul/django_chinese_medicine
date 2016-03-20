@@ -68,16 +68,16 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='diseasepattern',
             name='etiologie',
-            field=models.ManyToManyField(to='django-chinese-medicine.Etiologie', blank=True),
+            field=models.ManyToManyField(to='django_chinese_medicine.Etiologie', blank=True),
         ),
         migrations.AddField(
             model_name='diseasepattern',
             name='results',
-            field=models.ManyToManyField(to='django-chinese-medicine.Result', blank=True),
+            field=models.ManyToManyField(to='django_chinese_medicine.Result', blank=True),
         ),
         migrations.AddField(
             model_name='diseasepattern',
             name='therapy',
-            field=models.ManyToManyField(to='django-chinese-medicine.Therapy', blank=True),
+            field=models.ManyToManyField(to='django_chinese_medicine.Therapy', blank=True),
         ),
     ]
