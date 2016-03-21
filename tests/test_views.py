@@ -16,19 +16,23 @@ def test_disease_list(client):
 
 
 @pytest.mark.django_db
-def test_disease_detail(client):
-    response = client.get(reverse('disease_detail'))
-    assert 0
+def test_disease_pattern_detail(client, disease_pattern):
+    response = client.get(reverse('disease_detail',
+        kwargs={'slug': 'foo_disease_pattern'}))
+    assert response.status_code == 200
 
 
 @pytest.mark.django_db
-def test_result_detail(client):
-    response = client.get(reverse('result_detail'))
-    assert 0
+def test_result_detail(client, result):
+    response = client.get(reverse('result_detail',
+        kwargs={'slug': 'foo_result'}))
+    assert response.status_code == 200
 
 
-def test_therapy_detail(client):
-    response = client.get(reverse('therapy_detail'))
-    assert 0
+@pytest.mark.django_db
+def test_therapy_detail(client, therapy):
+    response = client.get(reverse('therapy_detail',
+        kwargs={'slug': 'foo_therapy'}))
+    assert response.status_code == 200
 
 
