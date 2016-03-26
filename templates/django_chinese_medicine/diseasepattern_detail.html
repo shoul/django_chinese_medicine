@@ -8,10 +8,10 @@
 <h3>Manifestation</h3> 
 
 <ul>
-{% for result in object.results.all %}
+{% for symptom in object.symptoms.all %}
 <li>
-<a href="{% url 'result_detail' result.slug %}">
-    {{ result.spot }}: {{ result.result }}</a>
+<a href="{% url 'symptom_detail' symptom.slug %}">
+    {{ symptom.spot }}: {{ symptom.result }}</a>
 </li>
 {% endfor %}
 </ul>

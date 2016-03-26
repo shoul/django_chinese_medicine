@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Etiologie, DiseasePattern, Therapy, Result
+from .models import Etiologie, DiseasePattern, Therapy, Symptom
 
 
 @admin.register(Etiologie, DiseasePattern)
@@ -8,8 +8,8 @@ class MyAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
 
-@admin.register(Result)
-class ResultAdmin(admin.ModelAdmin):
+@admin.register(Symptom)
+class SymptomAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('spot', 'result')}
 
 @admin.register(Therapy)

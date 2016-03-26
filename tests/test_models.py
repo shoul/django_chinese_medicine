@@ -1,12 +1,12 @@
 import pytest
-from django_chinese_medicine.models import (Result, Etiologie, DiseasePattern,
+from django_chinese_medicine.models import (Symptom, Etiologie, DiseasePattern,
     Therapy)
 
 
 @pytest.mark.django_db
-def test_result(result):
+def test_symptom(symptom):
     """Instances become fixtures automatically."""
-    assert isinstance(result, Result)
+    assert isinstance(symptom, Symptom)
 
 
 @pytest.mark.django_db
