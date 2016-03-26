@@ -6,9 +6,9 @@
     <h2>Befunde</h2>
 
     <ul>
-    {% for result in object_list %}
-    <li><a href="{% url 'result_detail' result.slug %}">
-        {{ result.spot }}: {{ result.result }}</a></li>
+    {% for symptom in object_list %}
+    <li><a href="{% url 'symptom_detail' symptom.slug %}">
+        {{ symptom.spot }}: {{ symptom.result }}</a></li>
     {% endfor %}
     </ul>
 </div>

@@ -4,14 +4,14 @@ from faker import Factory as FakerFactory
 faker = FakerFactory.create('de_DE')
 
 
-class ResultFactory(factory.django.DjangoModelFactory):
+class SymptomFactory(factory.django.DjangoModelFactory):
     spot = factory.LazyAttribute(lambda x: faker.name())
-    slug = 'foo_result'
+    slug = 'foo_symptom'
     result = factory.LazyAttribute(lambda x: faker.name())
     description = factory.LazyAttribute(lambda x: faker.text())
 
     class Meta:
-        model = 'django_chinese_medicine.Result'
+        model = 'django_chinese_medicine.Symptom'
 
 
 class EtiologieFactory(factory.django.DjangoModelFactory):

@@ -5,15 +5,15 @@ from django.db import models
 from django.utils.text import slugify
 
 
-class Result(models.Model):
+class Symptom(models.Model):
     spot = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
     result = models.CharField(max_length=255)
     description = models.TextField(blank=True, max_length=1024)
 
     class Meta:
-        verbose_name = u'Befund'
-        verbose_name_plural = u'Befunde'
+        verbose_name = u'Symptom'
+        verbose_name_plural = u'Symptome'
 
     def __unicode__(self):
         return '%s: %s' % (self.spot, self.result)
@@ -35,7 +35,7 @@ class Etiologie(models.Model):
 class DiseasePattern(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
-    results = models.ManyToManyField(Result, blank=True)
+    results = models.ManyToManyField(Symptom, blank=True)
     manifestation = models.TextField(blank=True, max_length=1024)
     # TODO: pathologie should better have a text field.
     pathologie = models.CharField(max_length=255)

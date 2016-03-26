@@ -1,11 +1,11 @@
 from django.core.urlresolvers import reverse
 import pytest
-from django_chinese_medicine.views import ResultIndex
+from django_chinese_medicine.views import SymptomIndex
 
 
 @pytest.mark.django_db
-def test_result_index(client):
-    response = client.get(reverse('result_index'))
+def test_symptom_index(client):
+    response = client.get(reverse('symptom_index'))
     assert response.status_code == 200
 
 
@@ -23,9 +23,9 @@ def test_disease_pattern_detail(client, disease_pattern):
 
 
 @pytest.mark.django_db
-def test_result_detail(client, result):
-    response = client.get(reverse('result_detail',
-        kwargs={'slug': 'foo_result'}))
+def test_symptom_detail(client, symptom):
+    response = client.get(reverse('symptom_detail',
+        kwargs={'slug': 'foo_symptom'}))
     assert response.status_code == 200
 
 
