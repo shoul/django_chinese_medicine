@@ -6,6 +6,7 @@ from .models import DiseasePattern, Symptom, Therapy
 
 class DiseaseListView(ListView):
     model = DiseasePattern
+    ordering = ['name',]
 
 
 class DiseaseDetailView(DetailView):
@@ -14,17 +15,22 @@ class DiseaseDetailView(DetailView):
 
 class SymptomIndex(ListView):
     model = Symptom
+    ordering = ['spot', 'result']
 
     def get_context_data(self, **kwargs):
         context = super(SymptomIndex, self).get_context_data(**kwargs)
-        context['disease_list'] = DiseasePattern.objects.all()
-        context['therapy_list'] = Therapy.objects.all()
+        context['disease_list'] = DiseasePattern.objects.all().order_by('name')
+        context['therapy_list'] = Therapy.objects.all().order_by('name')
         return context
 
 
 class SymptomDetail(DetailView):
     model = Symptom
 
+
+class TherapyListView(ListView):
+    model = Therapy
+    ordering = ['name',]
 
 class TherapyDetail(DetailView):
     model = Therapy

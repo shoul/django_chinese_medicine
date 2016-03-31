@@ -13,7 +13,7 @@
     </ul>
 </div>
 <div>
-    <h2>Krankheitsmuster</h2>
+    <h2><a href="{% url 'disease_index' %}">Krankheitsmuster</a></h2>
 
     <ul>
     {% for disease in disease_list %}
@@ -22,7 +22,7 @@
     </ul>
 </div>
 <div>
-    <h2>Therapien</h2>
+    <h2><a href="{% url 'therapy_index' %}">Therapien</a></h2>
     <ul>
     {% for therapy in therapy_list %}
         <li><a href="{% url 'therapy_detail' therapy.slug %}">
