@@ -5,7 +5,7 @@
 <h2>{{ object.name }}</h2>
 
 
-<h3>Manifestation</h3> 
+<h3>Symptome</h3>
 
 <ul>
 {% for symptom in object.symptoms.all %}
@@ -15,6 +15,10 @@
 </li>
 {% endfor %}
 </ul>
+
+
+
+<h3>Manifestation</h3>
 
 <p>{{ object.manifestation }}</p>
 
