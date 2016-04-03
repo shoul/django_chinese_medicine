@@ -1,11 +1,12 @@
-from django.forms import ModelForm, BooleanField, CharField, SlugField
+from django.forms import Form, BooleanField, ModelForm
 from django.core.validators import validate_slug
 
 from .models import Symptom
 
-class FilterBySymptomsForm(ModelForm):
+
+class ActivateSymptomForm(ModelForm):
     active = BooleanField(required=False)
 
     class Meta:
         model = Symptom
-        fields = ('active', 'spot', 'result', 'slug')
+        fields = ['active', 'slug', 'spot', 'result', 'description']

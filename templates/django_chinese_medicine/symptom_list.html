@@ -5,12 +5,33 @@
 <div>
     <h2>Befunde</h2>
 
-    <ul>
-    {% for symptom in object_list %}
-    <li><a href="{% url 'symptom_detail' symptom.slug %}">
-        {{ symptom.spot }}: {{ symptom.result }}</a></li>
-    {% endfor %}
-    </ul>
+    <form action="{% url 'symptom_index' %}" method="post" accept-charset="UTF-8">
+    {% csrf_token %}
+    {{ formset.magement_form }}
+    {{ formset.non_field_errors }}
+        <table class="table">
+            <tr>
+                <th>Active</th>
+                <th>Bereich</th>
+                <th>Beschwerde</th>
+                <th>Beschreibung</th>
+            </tr>
+            {% for form in formset %}
+            <tr>
+                <td>{{ form.active }}
+                    <input type="hidden" id="{{ form.slug.id }}" 
+                        value="{{ form.slug.value }}" name="{{ form.slug.name }}">
+                    </input>
+                </td>
+                <td>{{ form.spot.value }}</td>
+                <td>{{ form.result.value }}</td>
+                <td>{{ form.description.value }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <input type="submit" value="Filtern">
+    </form>
+
 </div>
 <div>
     <h2><a href="{% url 'disease_index' %}">Krankheitsmuster</a></h2>
