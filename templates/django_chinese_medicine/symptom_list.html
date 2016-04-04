@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -7,7 +8,7 @@
 
     <form action="{% url 'symptom_index' %}" method="post" accept-charset="UTF-8">
     {% csrf_token %}
-    {{ formset.magement_form }}
+    {{ formset.management_form }}
     {{ formset.non_field_errors }}
         <table class="table">
             <tr>
@@ -18,8 +19,8 @@
             </tr>
             {% for form in formset %}
             <tr>
-                <td>{{ form.active }}
-                    <input type="hidden" id="{{ form.slug.id }}" 
+                <td>{{ form.active.errors }}{{ form.active }}
+                    <input type="hidden" id="{{ form.slug.html_initial_id }}" 
                         value="{{ form.slug.value }}" name="{{ form.slug.name }}">
                     </input>
                 </td>
