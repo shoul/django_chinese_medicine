@@ -1,16 +1,12 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
 <div>
     <h2>Befunde</h2>
 
-    <ul>
-    {% for symptom in object_list %}
-    <li><a href="{% url 'symptom_detail' symptom.slug %}">
-        {{ symptom.spot }}: {{ symptom.result }}</a></li>
-    {% endfor %}
-    </ul>
+    {% crispy formset %}
 </div>
 <div>
     <h2><a href="{% url 'disease_index' %}">Krankheitsmuster</a></h2>
@@ -23,12 +19,6 @@
 </div>
 <div>
     <h2><a href="{% url 'therapy_index' %}">Therapien</a></h2>
-    <ul>
-    {% for therapy in therapy_list %}
-        <li><a href="{% url 'therapy_detail' therapy.slug %}">
-            {{ therapy.name }}</a></li>
-    {% endfor %}
-    </ul>
 </div>
 
 
