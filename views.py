@@ -14,41 +14,27 @@ class DiseaseListView(ListView):
 class DiseaseDetailView(DetailView):
     model = DiseasePattern
 
-def get_int_from_string(string):
-    ### TODO: Check int, write test
-    import re
-    p = re.compile('^.*(\d).*$')
-    m = p.match(string)
-    return int(m.groups()[0])
 
 class SymptomIndex(ListView):
     model = Symptom
     template_name = 'django_chinese_medicine/symptom_list.html'
-    ActivateSymptomFormSet = modelformset_factory(Symptom, 
-        form=ActivateSymptomForm, extra=0)
-    symptoms = Symptom.objects.all().order_by(*['spot', 'result'])
 
     def get(self, request, *args, **kwargs):
         disease_list = DiseasePattern.objects.all().order_by('name')
-        therapy_list = Therapy.objects.all().order_by('name')
-        formset = self.ActivateSymptomFormSet(queryset=self.symptoms)
+        formset = ActivateSymptomForm()
         return render(request, self.template_name, {'formset': formset,
-            'disease_list': disease_list, 'therapy_list': therapy_list})
+            'disease_list': disease_list})
 
     def post(self, request, *args, **kwargs):
-        formset = self.ActivateSymptomFormSet(request.POST, request.FILES,
-                queryset=self.symptoms)
-        # get slug_list from fomset.data:
-        slug_list = formset.data.getlist(u'slug', '')
-        active_list = [get_int_from_string(k) for k, v in formset.data.items() 
-            if v == u'on'] 
-        active_slug_for_symptoms = [slug_list[i] for i in active_list]
-        disease_list = DiseasePattern.objects.all().order_by('name').filter(
-            symptoms__slug__in=active_slug_for_symptoms)
-        therapy_list = Therapy.objects.all().order_by('name')
+        formset = ActivateSymptomForm(request.POST)
+
+        if formset.is_valid():
+            symptom_select_id = request.POST.getlist(u'symptom_select')
+            disease_list = DiseasePattern.objects.all().order_by('name').filter(
+                symptoms__id__in=symptom_select_id)
 
         return render(request, self.template_name, {'formset': formset,
-            'disease_list': disease_list, 'therapy_list': therapy_list})
+            'disease_list': disease_list})
 
 
 class SymptomDetail(DetailView):

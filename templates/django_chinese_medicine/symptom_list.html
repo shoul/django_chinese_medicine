@@ -6,33 +6,7 @@
 <div>
     <h2>Befunde</h2>
 
-    <form action="{% url 'symptom_index' %}" method="post" accept-charset="UTF-8">
-    {% csrf_token %}
-    {{ formset.management_form }}
-    {{ formset.non_field_errors }}
-        <table class="table">
-            <tr>
-                <th>Active</th>
-                <th>Bereich</th>
-                <th>Beschwerde</th>
-                <th>Beschreibung</th>
-            </tr>
-            {% for form in formset %}
-            <tr>
-                <td>{{ form.active.errors }}{{ form.active }}
-                    <input type="hidden" id="{{ form.slug.html_initial_id }}" 
-                        value="{{ form.slug.value }}" name="{{ form.slug.name }}">
-                    </input>
-                </td>
-                <td>{{ form.spot.value }}</td>
-                <td>{{ form.result.value }}</td>
-                <td>{{ form.description.value }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-        <input type="submit" value="Filtern">
-    </form>
-
+    {% crispy formset %}
 </div>
 <div>
     <h2><a href="{% url 'disease_index' %}">Krankheitsmuster</a></h2>
@@ -45,12 +19,6 @@
 </div>
 <div>
     <h2><a href="{% url 'therapy_index' %}">Therapien</a></h2>
-    <ul>
-    {% for therapy in therapy_list %}
-        <li><a href="{% url 'therapy_detail' therapy.slug %}">
-            {{ therapy.name }}</a></li>
-    {% endfor %}
-    </ul>
 </div>
 
 
