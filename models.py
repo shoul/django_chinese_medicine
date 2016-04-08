@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
 from __future__ import unicode_literals
+from django.core.urlresolvers import reverse
 
 from django.db import models
 from django.utils.text import slugify
@@ -18,6 +19,9 @@ class Symptom(models.Model):
     def __unicode__(self):
         return '%s: %s' % (self.spot, self.result)
 
+    def get_absolute_url(self):
+        return reverse('symptom_detail', kwargs={'slug': self.slug})
+
 
 class Etiologie(models.Model):
     name = models.CharField(max_length=255)
@@ -30,6 +34,9 @@ class Etiologie(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('etiologie_detail', kwargs={'slug': self.slug})
 
 
 class DiseasePattern(models.Model):
@@ -48,6 +55,9 @@ class DiseasePattern(models.Model):
     def __unicode__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('disease_detail', kwargs={'slug': self.slug})
+
 
 class Therapy(models.Model):
     name = models.CharField(max_length=255)
@@ -61,3 +71,6 @@ class Therapy(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('therapy_detail', kwargs={'slug': self.slug})
