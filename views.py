@@ -11,12 +11,12 @@ from .forms import ActivateSymptomForm
 from .models import DiseasePattern, Symptom, Therapy, Etiologie
 
 
-class DiseaseListView(gnrc.ListView):
+class DiseaseList(gnrc.ListView):
     model = DiseasePattern
     ordering = ['name',]
 
 
-class DiseaseDetailView(gnrc.DetailView):
+class DiseaseDetail(gnrc.DetailView):
     model = DiseasePattern
 
 
@@ -24,11 +24,25 @@ class DiseaseAdd(gnrc.CreateView):
     model = DiseasePattern
     fields = ['name', 'slug', 'symptoms', 'manifestation', 'pathologie',
         'etiologie', 'therapy']
+    template_name = 'django_chinese_medicine/crispy_edit.html'
 
     def get_form(self, *args):
         form = super(DiseaseAdd, self).get_form(*args)
         form.helper = FormHelper()
         form.helper.add_input(Submit('submit', 'Anlegen'))
+        return form
+
+
+class DiseaseEdit(gnrc.UpdateView):
+    model = DiseasePattern
+    fields = ['name', 'slug', 'symptoms', 'manifestation', 'pathologie',
+        'etiologie', 'therapy']
+    template_name = 'django_chinese_medicine/crispy_edit.html'
+
+    def get_form(self, *args):
+        form = super(DiseaseEdit, self).get_form(*args)
+        form.helper = FormHelper()
+        form.helper.add_input(Submit('submit', u'Ändern'))
         return form
 
 
@@ -63,7 +77,7 @@ class SymptomCreate(gnrc.CreateView):
     fields = ['spot', 'slug', 'result', 'description']
 
 
-class TherapyListView(gnrc.ListView):
+class TherapyList(gnrc.ListView):
     model = Therapy
     ordering = ['name',]
 
