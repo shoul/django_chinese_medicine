@@ -87,9 +87,41 @@ class SymptomDetail(gnrc.DetailView):
     model = Symptom
 
 
-class SymptomCreate(gnrc.CreateView):
+class SymptomAdd(gnrc.CreateView):
     model = Symptom
-    fields = ['spot', 'slug', 'result', 'description']
+    fields = ['spot', 'result', 'slug', 'description']
+    template_name = 'django_chinese_medicine/crispy_edit.html'
+
+    def get_form(self, *args):
+        form = super(SymptomAdd, self).get_form(*args)
+        form.helper = FormHelper()
+        form.helper.add_input(Submit('submit', 'Anlegen'))
+        return form
+
+
+class SymptomEdit(gnrc.UpdateView):
+    model = Symptom
+    fields = ['spot', 'result', 'slug', 'description']
+    template_name = 'django_chinese_medicine/crispy_edit.html'
+
+    def get_form(self, *args):
+        form = super(SymptomEdit, self).get_form(*args)
+        form.helper = FormHelper()
+        form.helper.add_input(Submit('submit', 'Bearbeiten'))
+        return form
+
+
+class SymptomRemove(gnrc.DeleteView):
+    model = Symptom
+    fields = ['spot', 'result', 'slug', 'description']
+    template_name = 'django_chinese_medicine/symptom_delete.html'
+    success_url = reverse_lazy('symptom_index')
+
+    def get_form(self, *args):
+        form = super(SymptomRemove, self).get_form(*args)
+        form.helper = FormHelper()
+        form.helper.add_input(Submit('submit', 'Schreddern'))
+        return form
 
 
 class TherapyList(gnrc.ListView):

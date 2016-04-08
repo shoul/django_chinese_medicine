@@ -4,7 +4,12 @@
 {% block content %}
 
 <div>
-    <h2>Befunde</h2>
+    <h2>
+        <a href="{% url 'symptom_add' %}" >
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+        </a>
+        Symptome
+    </h2>
 
     {% crispy formset %}
 </div>

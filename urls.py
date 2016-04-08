@@ -15,7 +15,12 @@ urlpatterns = [
     url(r'^therapie/(?P<slug>[-\w]+)/$', views.TherapyDetail.as_view(),
     name='therapy_detail'),
     url(r'^therapy/add/$', views.TherapyCreate.as_view(), name='therapy_add'),
-    url(r'^(?P<slug>[-\w]+)/$', views.SymptomDetail.as_view(),
+    url(r'^symptom/neu/$', views.SymptomAdd.as_view(), name='symptom_add'),
+    url(r'^symptom/(?P<slug>[-\w]+)/schreddern/$', views.SymptomRemove.as_view(),
+        name='symptom_remove'),
+    url(r'^symptom/(?P<slug>[-\w]+)/bearbeiten/$', views.SymptomEdit.as_view(),
+        name='symptom_edit'),
+    url(r'^symptom/(?P<slug>[-\w]+)/$', views.SymptomDetail.as_view(),
         name='symptom_detail'),
     url(r'^$', views.SymptomIndex.as_view(), name='symptom_index'),
 ]
