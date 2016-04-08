@@ -2,10 +2,14 @@
 
 {% block content %}
 
-<h2>{{ object.name }}
+<h2>
+    <a href="{% url 'disease_remove' object.slug %}" >
+        <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+    </a>
     <a href="{% url 'disease_edit' object.slug %}" >
         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
     </a>
+    {{ object.name }}
 </h2>
 
 

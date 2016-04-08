@@ -5,6 +5,8 @@ from django_chinese_medicine import views
 urlpatterns = [
     url(r'^krankheitsmuster/neu/$', views.DiseaseAdd.as_view(), name='disease_add'),
     url(r'^krankheitsmuster/$', views.DiseaseList.as_view(), name='disease_index'),
+    url(r'^krankheitsmuster/(?P<slug>[-\w]+)/schreddern/$', views.DiseaseRemove.as_view(),
+        name='disease_remove'),
     url(r'^krankheitsmuster/(?P<slug>[-\w]+)/bearbeiten/$', views.DiseaseEdit.as_view(),
         name='disease_edit'),
     url(r'^krankheitsmuster/(?P<slug>[-\w]+)/$', views.DiseaseDetail.as_view(),

@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 from django.shortcuts import render
 from django.views import generic as gnrc
+from django.core.urlresolvers import reverse_lazy
 
 from crispy_forms.layout import Submit
 from crispy_forms.helper import FormHelper
@@ -43,6 +44,20 @@ class DiseaseEdit(gnrc.UpdateView):
         form = super(DiseaseEdit, self).get_form(*args)
         form.helper = FormHelper()
         form.helper.add_input(Submit('submit', u'Ändern'))
+        return form
+
+
+class DiseaseRemove(gnrc.DeleteView):
+    model = DiseasePattern
+    fields = ['name', 'slug', 'symptoms', 'manifestation', 'pathologie',
+        'etiologie', 'therapy']
+    template_name = 'django_chinese_medicine/disease_pattern_delete.html'
+    success_url = reverse_lazy('disease_index')
+
+    def get_form(self, *args):
+        form = super(DiseaseRemove, self).get_form(*args)
+        form.helper = FormHelper()
+        form.helper.add_input(Submit('submit', u'Schreddern'))
         return form
 
 
