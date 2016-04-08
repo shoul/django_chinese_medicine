@@ -2,7 +2,11 @@
 
 {% block content %}
 
-<h2>Krankheitsmuster</h2>
+<h2>Krankheitsmuster
+    <a href="{% url 'disease_add' %}" >
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+    </a>
+</h2>
 <ul>
 {% for disease in object_list %}
 <li><a href="{% url 'disease_detail' disease.slug %}">{{ disease.name }}</a></li>

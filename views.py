@@ -1,21 +1,67 @@
+# -*- encoding: utf-8 -*-
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
-from django.forms import modelformset_factory
+from django.views import generic as gnrc
+from django.core.urlresolvers import reverse_lazy
+
+from crispy_forms.layout import Submit
+from crispy_forms.helper import FormHelper
 
 from .models import DiseasePattern, Symptom, Therapy
 from .forms import ActivateSymptomForm
 
+from .models import DiseasePattern, Symptom, Therapy, Etiologie
 
-class DiseaseListView(ListView):
+
+class DiseaseList(gnrc.ListView):
     model = DiseasePattern
     ordering = ['name',]
 
 
-class DiseaseDetailView(DetailView):
+class DiseaseDetail(gnrc.DetailView):
     model = DiseasePattern
 
 
-class SymptomIndex(ListView):
+class DiseaseAdd(gnrc.CreateView):
+    model = DiseasePattern
+    fields = ['name', 'slug', 'symptoms', 'manifestation', 'pathologie',
+        'etiologie', 'therapy']
+    template_name = 'django_chinese_medicine/crispy_edit.html'
+
+    def get_form(self, *args):
+        form = super(DiseaseAdd, self).get_form(*args)
+        form.helper = FormHelper()
+        form.helper.add_input(Submit('submit', 'Anlegen'))
+        return form
+
+
+class DiseaseEdit(gnrc.UpdateView):
+    model = DiseasePattern
+    fields = ['name', 'slug', 'symptoms', 'manifestation', 'pathologie',
+        'etiologie', 'therapy']
+    template_name = 'django_chinese_medicine/crispy_edit.html'
+
+    def get_form(self, *args):
+        form = super(DiseaseEdit, self).get_form(*args)
+        form.helper = FormHelper()
+        form.helper.add_input(Submit('submit', u'Ändern'))
+        return form
+
+
+class DiseaseRemove(gnrc.DeleteView):
+    model = DiseasePattern
+    fields = ['name', 'slug', 'symptoms', 'manifestation', 'pathologie',
+        'etiologie', 'therapy']
+    template_name = 'django_chinese_medicine/disease_pattern_delete.html'
+    success_url = reverse_lazy('disease_index')
+
+    def get_form(self, *args):
+        form = super(DiseaseRemove, self).get_form(*args)
+        form.helper = FormHelper()
+        form.helper.add_input(Submit('submit', u'Schreddern'))
+        return form
+
+
+class SymptomIndex(gnrc.ListView):
     model = Symptom
     template_name = 'django_chinese_medicine/symptom_list.html'
 
@@ -37,13 +83,38 @@ class SymptomIndex(ListView):
             'disease_list': disease_list})
 
 
-class SymptomDetail(DetailView):
+class SymptomDetail(gnrc.DetailView):
     model = Symptom
 
 
-class TherapyListView(ListView):
+class SymptomCreate(gnrc.CreateView):
+    model = Symptom
+    fields = ['spot', 'slug', 'result', 'description']
+
+
+class TherapyList(gnrc.ListView):
     model = Therapy
     ordering = ['name',]
 
-class TherapyDetail(DetailView):
+
+class TherapyDetail(gnrc.DetailView):
     model = Therapy
+
+
+class TherapyCreate(gnrc.CreateView):
+    model = Therapy
+    fields = ['name', 'intension', 'slug', 'description']
+
+
+class EtiologieList(gnrc.ListView):
+    model = Etiologie
+
+
+class EtiologieDetail(gnrc.DetailView):
+    model = Etiologie
+
+
+class EtiologieCreate(gnrc.CreateView):
+    model = Etiologie
+    fields = ['name', 'slug', 'description']
+
