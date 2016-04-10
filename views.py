@@ -63,7 +63,12 @@ class DiseaseRemove(gnrc.DeleteView):
 
 class SymptomIndex(gnrc.ListView):
     model = Symptom
-    template_name = 'django_chinese_medicine/symptom_list.html'
+    ordering = ['spot','result']
+
+
+class Main(gnrc.ListView):
+    model = Symptom
+    template_name = 'django_chinese_medicine/main.html'
 
     def get(self, request, *args, **kwargs):
         disease_list = DiseasePattern.objects.all().order_by('name')

@@ -22,5 +22,6 @@ urlpatterns = [
         name='symptom_edit'),
     url(r'^symptom/(?P<slug>[-\w]+)/$', views.SymptomDetail.as_view(),
         name='symptom_detail'),
-    url(r'^$', views.SymptomIndex.as_view(), name='symptom_index'),
+    url(r'^symptome/$', views.SymptomIndex.as_view(), name='symptom_index'),
+    url(r'^$', views.Main.as_view(), name='main'),
 ]

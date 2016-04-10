@@ -8,7 +8,7 @@ def test_main(client):
     response = client.get(reverse('main'))
     assert response.status_code == 200
     assert 'Symptome' in response.content
-    assert 'Syndrome' in response.content
+    assert 'Krankheitsmuster' in response.content
     assert 'Therapien' in response.content
 
 
@@ -23,7 +23,7 @@ def test_symptom_index(client):
 def test_disease_index(client):
     response = client.get(reverse('disease_index'))
     assert response.status_code == 200
-    assert 'Syndrome' in response.content
+    assert 'Krankheitsmuster' in response.content
 
 
 @pytest.mark.django_db
