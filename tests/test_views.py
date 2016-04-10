@@ -65,10 +65,10 @@ def test_therapy_index(client):
 def test_therapy_detail(client, therapy):
     _f.TherapyDetailFactory.create()
     response = client.get(reverse('therapy_detail',
-        kwargs={'slug': 'foo_therapy'}))
+        kwargs={'slug': 'therapy_foo'}))
     assert response.status_code == 200
     assert 'Therapie Foo' in response.content
-    assert 'therapie_foo' in response.content
+    assert 'therapy_foo' in response.content
     assert 'Intension Foo' in response.content
     assert 'Description Foo' in response.content
 
@@ -81,7 +81,7 @@ def test_etiologie_index(client):
 
 
 @pytest.mark.django_db
-def test_etiologie_index(client, etiologie):
+def test_etiologie_detail(client, etiologie):
     _f.EtiologieDetailFactory.create()
     response = client.get(reverse('etiologie_detail',
         kwargs={'slug': 'etiologie_foo'}))
