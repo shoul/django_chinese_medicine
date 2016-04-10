@@ -43,6 +43,7 @@ def test_disease_pattern_index(client):
 
 @pytest.mark.django_db
 def test_disease_pattern_detail(client, disease_pattern):
+    _f.DiseasePatternDetailFactory.create()
     response = client.get(reverse('disease_detail',
         kwargs={'slug': 'disease_pattern_foo'}))
     assert response.status_code == 200
@@ -62,6 +63,7 @@ def test_therapy_index(client):
 
 @pytest.mark.django_db
 def test_therapy_detail(client, therapy):
+    _f.TherapyDetailFactory.create()
     response = client.get(reverse('therapy_detail',
         kwargs={'slug': 'foo_therapy'}))
     assert response.status_code == 200
