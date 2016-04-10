@@ -4,7 +4,7 @@ from django_chinese_medicine.views import SymptomIndex
 
 
 @pytest.mark.django_db
-def test_main(client):
+def test_symptom_index(client):
     response = client.get(reverse('main'))
     assert response.status_code == 200
     assert 'Symptome' in response.content
@@ -13,9 +13,17 @@ def test_main(client):
 
 
 @pytest.mark.django_db
-def test_disease_list(client):
+def test_disease_index(client):
     response = client.get(reverse('disease_index'))
     assert response.status_code == 200
+    assert 'Syndrome' in response.content
+
+
+@pytest.mark.django_db
+def test_therapy_index(client):
+    response = client.get(reverse('therapy_index'))
+    assert response.status_code == 200
+    assert 'Therapien' in response.content
 
 
 @pytest.mark.django_db
