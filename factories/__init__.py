@@ -6,7 +6,7 @@ faker = FakerFactory.create('de_DE')
 
 class SymptomDetailFactory(factory.django.DjangoModelFactory):
     localisation = 'Head'
-    slug = 'foo_symptom'
+    slug = 'head_pain_stinging'
     indication = 'Pain, stinging'
     description = 'Description for stinging head pain.'
 

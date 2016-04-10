@@ -1,6 +1,7 @@
 from django.core.urlresolvers import reverse
 import pytest
-from django_chinese_medicine.views import SymptomIndex
+
+from factories import SymptomDetailFactory
 
 
 @pytest.mark.django_db
@@ -42,6 +43,7 @@ def test_disease_pattern_detail(client, disease_pattern):
 
 @pytest.mark.django_db
 def test_symptom_detail(client, symptom):
+    SymptomDetailFactory.create()
     response = client.get(reverse('symptom_detail',
         kwargs={'slug': 'head_pain_stinging'}))
 
