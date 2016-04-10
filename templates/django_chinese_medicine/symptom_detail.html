@@ -2,7 +2,15 @@
 
 {% block content %}
 
-<h2>Befund - {{ object.spot }}: {{ object.result }}</h2>
+<h2>
+    <a href="{% url 'symptom_remove' object.slug %}" >
+        <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+    </a>
+    <a href="{% url 'symptom_edit' object.slug %}" >
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+    </a>
+    Symptom - {{ object.localisation }}: {{ object.indication }}
+</h2>
 
 
 <h3>Zugehörige Krankheitsmuster</h3> 
@@ -12,5 +20,9 @@
 <li><a href="{% url 'disease_detail' diseasepattern.slug %}">{{ diseasepattern.name }}</a></li>
 {% endfor %}
 </ul>
+
+<h3>Beschreibung</h3>
+
+<p>{{ object.description }}</p>
 
 {% endblock content %}

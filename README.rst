@@ -19,8 +19,16 @@ Change to the directory where the `manage.py` is. Clone the repo::
 
    $ git clone https://github.com/shoul/django_chinese_medicine.git
 
-Add `django_chinese_medicine` to `INSTALLED_APPS` in youre settings.py. Include
-the `urls.py` somehow like this::
+Add `django_chinese_medicine` to `INSTALLED_APPS` in youre settings.py::
+
+   INSTALLED_APPS = (
+       ...
+       'django_chinese_medicine',
+       ...
+   )
+
+
+Include the `urls.py` somehow like this::
 
    urlpatterns = [
        ...

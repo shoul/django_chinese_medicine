@@ -16,7 +16,7 @@ class ActivateSymptomForm(Form):
         super(ActivateSymptomForm, self).__init__(*args, **kwargs)
 
         self.fields['symptom_select'].queryset = Symptom.objects.all(
-                ).order_by('spot', 'result')
+                ).order_by('localisation', 'indication')
 
         self.helper = FormHelper()
         self.helper.form_method = 'post'

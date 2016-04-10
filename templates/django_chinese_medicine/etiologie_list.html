@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Etiologien</h2>
+<ul>
+{% for etiologie in object_list %}
+<li><a href="{% url 'etiologie_detail' etiologie.slug %}">{{ etiologie.name }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock content %}

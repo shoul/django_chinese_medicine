@@ -11,8 +11,8 @@ class MyAdmin(admin.ModelAdmin):
 
 @admin.register(Symptom)
 class SymptomAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('spot', 'result')}
-    ordering = ['spot', 'result']
+    prepopulated_fields = {'slug': ('localisation', 'indication')}
+    ordering = ['localisation', 'indication']
 
 @admin.register(Therapy)
 class Therapy(admin.ModelAdmin):
