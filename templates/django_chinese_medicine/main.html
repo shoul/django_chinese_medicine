@@ -5,10 +5,7 @@
 
 <div>
     <h2>
-        <a href="{% url 'symptom_add' %}" >
-            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-        </a>
-        Symptome
+        <a href="{% url 'symptom_index' %}">Symptome</a>
     </h2>
 
     {% crispy formset %}

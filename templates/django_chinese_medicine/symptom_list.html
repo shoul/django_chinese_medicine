@@ -5,7 +5,11 @@
 <h2>Symptome</h2>
 <ul>
 {% for symptom in object_list %}
-<li><a href="{% url 'symptom_detail' symptom.slug %}">{{ symptom.name }}</a></li>
+<li>
+    <a href="{% url 'symptom_detail' symptom.slug %}">
+    {{ symptom.localisation }}: {{ symptom.indication }}
+    </a>
+</li>
 {% endfor %}
 </ul>
 
