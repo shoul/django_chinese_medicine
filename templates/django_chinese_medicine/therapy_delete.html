@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+<h2>{{ object }} - Schreddern?</h2>
+
+<form action="{% url 'therapy_remove' object.slug %}" method="post">{% csrf_token %}
+    <div class="alert alert-warning" role="alert">
+        <p>
+            Sind Sie sicher das Element "{{ object }}" gelöscht werden soll? Es
+            kann danach nicht mehr hergestellt werden.
+        </p>
+    </div>
+    <button type="submit" class="btn btn-warning"> Schreddern </button>
+</form>
+    <a href="{% url 'therapy_detail' object.slug %}">
+        <button type="button" class="btn btn-default">Zurück, nicht löschen.</button>
+    </a>
+</div>
+{% endblock content %}

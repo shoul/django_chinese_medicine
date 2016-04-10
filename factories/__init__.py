@@ -65,7 +65,7 @@ class DiseasePatternFactory(factory.django.DjangoModelFactory):
 
 class TherapyDetailFactory(factory.django.DjangoModelFactory):
     name = 'Therapie Foo'
-    slug = 'therapie_foo'
+    slug = 'therapy_foo'
     intension = 'Intension Foo'
     description = 'Description Foo'
 
