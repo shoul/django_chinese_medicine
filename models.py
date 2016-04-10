@@ -17,7 +17,7 @@ class Symptom(models.Model):
         verbose_name_plural = u'Symptome'
 
     def __unicode__(self):
-        return '%s: %s' % (self.spot, self.indication)
+        return '%s: %s' % (self.localisation, self.indication)
 
     def get_absolute_url(self):
         return reverse('symptom_detail', kwargs={'slug': self.slug})
