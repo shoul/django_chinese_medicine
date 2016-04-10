@@ -63,7 +63,7 @@ class DiseaseRemove(gnrc.DeleteView):
 
 class SymptomIndex(gnrc.ListView):
     model = Symptom
-    ordering = ['spot','result']
+    ordering = ['localisation','indication']
 
 
 class Main(gnrc.ListView):
@@ -94,7 +94,7 @@ class SymptomDetail(gnrc.DetailView):
 
 class SymptomAdd(gnrc.CreateView):
     model = Symptom
-    fields = ['spot', 'result', 'slug', 'description']
+    fields = ['localisation', 'indication', 'slug', 'description']
     template_name = 'django_chinese_medicine/crispy_edit.html'
 
     def get_form(self, *args):
@@ -106,7 +106,7 @@ class SymptomAdd(gnrc.CreateView):
 
 class SymptomEdit(gnrc.UpdateView):
     model = Symptom
-    fields = ['spot', 'result', 'slug', 'description']
+    fields = ['localisation', 'indication', 'slug', 'description']
     template_name = 'django_chinese_medicine/crispy_edit.html'
 
     def get_form(self, *args):
@@ -118,7 +118,7 @@ class SymptomEdit(gnrc.UpdateView):
 
 class SymptomRemove(gnrc.DeleteView):
     model = Symptom
-    fields = ['spot', 'result', 'slug', 'description']
+    fields = ['localisation', 'indication', 'slug', 'description']
     template_name = 'django_chinese_medicine/symptom_delete.html'
     success_url = reverse_lazy('symptom_index')
 

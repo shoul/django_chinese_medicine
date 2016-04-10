@@ -1,7 +1,7 @@
 from django.core.urlresolvers import reverse
 import pytest
 
-from factories import SymptomDetailFactory
+from django_chinese_medicine.factories import SymptomDetailFactory
 
 
 @pytest.mark.django_db

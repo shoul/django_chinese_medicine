@@ -7,9 +7,9 @@ from django.utils.text import slugify
 
 
 class Symptom(models.Model):
-    spot = models.CharField(max_length=255)
+    localisation = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
-    result = models.CharField(max_length=255)
+    indication = models.CharField(max_length=255)
     description = models.TextField(blank=True, max_length=1024)
 
     class Meta:
@@ -17,7 +17,7 @@ class Symptom(models.Model):
         verbose_name_plural = u'Symptome'
 
     def __unicode__(self):
-        return '%s: %s' % (self.spot, self.result)
+        return '%s: %s' % (self.spot, self.indication)
 
     def get_absolute_url(self):
         return reverse('symptom_detail', kwargs={'slug': self.slug})

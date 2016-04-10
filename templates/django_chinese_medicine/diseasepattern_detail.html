@@ -19,7 +19,7 @@
 {% for symptom in object.symptoms.all %}
 <li>
 <a href="{% url 'symptom_detail' symptom.slug %}">
-    {{ symptom.spot }}: {{ symptom.result }}</a>
+    {{ symptom.localisation }}: {{ symptom.indication }}</a>
 </li>
 {% endfor %}
 </ul>
