@@ -4,10 +4,20 @@ from faker import Factory as FakerFactory
 faker = FakerFactory.create('de_DE')
 
 
-class SymptomFactory(factory.django.DjangoModelFactory):
-    spot = factory.LazyAttribute(lambda x: faker.name())
+class SymptomDetailFactory(factory.django.DjangoModelFactory):
+    localisation = 'Head'
     slug = 'foo_symptom'
-    result = factory.LazyAttribute(lambda x: faker.name())
+    indication = 'Pain, stinging'
+    description = 'Description for stinging head pain.'
+
+    class Meta:
+        model = 'django_chinese_medicine.Symptom'
+
+
+class SymptomFactory(factory.django.DjangoModelFactory):
+    localisation = factory.LazyAttribute(lambda x: faker.name())
+    slug = 'foo_symptom'
+    indication = factory.LazyAttribute(lambda x: faker.name())
     description = factory.LazyAttribute(lambda x: faker.text())
 
     class Meta:

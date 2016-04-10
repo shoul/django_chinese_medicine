@@ -43,8 +43,13 @@ def test_disease_pattern_detail(client, disease_pattern):
 @pytest.mark.django_db
 def test_symptom_detail(client, symptom):
     response = client.get(reverse('symptom_detail',
-        kwargs={'slug': 'foo_symptom'}))
+        kwargs={'slug': 'head_pain_stinging'}))
+
     assert response.status_code == 200
+    assert 'Head' in response.content
+    assert 'head_pain_stinging' in response.content
+    assert 'Pain, stinging' in response.content
+    assert 'Description for stinging head pain.' in response.content
 
 
 @pytest.mark.django_db
