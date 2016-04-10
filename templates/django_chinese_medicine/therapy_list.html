@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h2>Threapien</h2>
+<h2>Therapien</h2>
 <ul>
 {% for therapy in object_list %}
 <li><a href="{% url 'disease_detail' therapy.slug %}">{{ therapy.name }}</a></li>

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div>
+    <h2>
+        <a href="{% url 'symptom_index' %}">Symptome</a>
+    </h2>
+
+    {% crispy formset %}
+</div>
+<div>
+    <h2><a href="{% url 'disease_index' %}">Krankheitsmuster</a></h2>
+
+    <ul>
+    {% for disease in disease_list %}
+        <li><a href="{% url 'disease_detail' disease.slug %}">{{ disease.name }}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+<div>
+    <h2><a href="{% url 'therapy_index' %}">Therapien</a></h2>
+</div>
+<div>
+    <h2><a href="{% url 'etiologie_index' %}">Etiologien</a></h2>
+</div>
+
+
+{% endblock content %}

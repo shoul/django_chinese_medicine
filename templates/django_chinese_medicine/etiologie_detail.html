@@ -2,16 +2,14 @@
 
 {% block content %}
 <h2>
-    <a href="{% url 'therapy_remove' object.slug %}" >
+    <a href="{% url 'etiologie_remove' object.slug %}" >
         <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
     </a>
-    <a href="{% url 'therapy_edit' object.slug %}" >
+    <a href="{% url 'etiologie_edit' object.slug %}" >
         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
     </a>
     {{ object.name }}
 </h2>
-
-<p>Intention: {{ object.intension }}</p>
 
 <h3>Beschreibung</h3>
 
