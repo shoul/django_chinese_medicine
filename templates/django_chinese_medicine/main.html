@@ -5,8 +5,12 @@
 
 <div>
     <h2>
+    <a href="{% url 'symptom_add' %}" >
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+    </a>
         <a href="{% url 'symptom_index' %}">Symptome</a>
     </h2>
+<input id="search" name="search" placeholder="Suchen" type="text" data-list=".list">
 
     {% crispy formset %}
 </div>
@@ -19,12 +23,14 @@
     {% endfor %}
     </ul>
 </div>
-<div>
-    <h2><a href="{% url 'therapy_index' %}">Therapien</a></h2>
-</div>
-<div>
-    <h2><a href="{% url 'etiologie_index' %}">Etiologien</a></h2>
-</div>
-
 
 {% endblock content %}
+
+{% block footer_script %}{{ block.super }}
+  <script>
+  $(document).ready(function() {
+    $('.controls').addClass('list');
+  });
+  </script>
+{% include 'django_chinese_medicine/hideseek.html' %}
+{% endblock footer_script %}
