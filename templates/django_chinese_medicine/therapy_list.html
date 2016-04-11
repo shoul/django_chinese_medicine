@@ -2,7 +2,12 @@
 
 {% block content %}
 
-<h2>Therapien</h2>
+<h2>
+<a href="{% url 'therapy_add' %}" >
+  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+</a>
+  Therapien
+</h2>
 <input id="search" name="search" placeholder="Suche" type="text" data-list=".list">
 <ul class="list">
 {% for therapy in object_list %}

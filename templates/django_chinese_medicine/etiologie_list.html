@@ -2,7 +2,13 @@
 
 {% block content %}
 
-<h2>Etiologien</h2>
+<h2>
+<a href="{% url 'etiologie_add' %}" >
+  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+</a>
+  Etiologien
+</h2>
+
 <input id="search" name="search" placeholder="Suche" type="text" data-list=".list">
 <ul class="list">
 {% for etiologie in object_list %}
