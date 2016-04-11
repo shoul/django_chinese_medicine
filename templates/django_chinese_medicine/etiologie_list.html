@@ -11,7 +11,7 @@
 
 <input id="search" name="search" placeholder="Suche" type="text" data-list=".list">
 <ul class="list">
-{% for etiologie in object_list %}
+{% for etiologie in object_list|dictsort:"name" %}
 <li><a href="{% url 'etiologie_detail' etiologie.slug %}">{{ etiologie.name }}</a></li>
 {% endfor %}
 </ul>

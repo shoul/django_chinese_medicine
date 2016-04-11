@@ -8,7 +8,7 @@
     <a href="{% url 'therapy_edit' object.slug %}" >
         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
     </a>
-    {{ object.name }}
+    Therapie - {{ object.name }}
 </h2>
 
 <p>Intention: {{ object.intension }}</p>
@@ -20,5 +20,13 @@
 {% else %}
 Noch keine Beschreibung
 {% endif %}
+
+<h3>Krankheitsmuster</h3>
+
+<ul>
+{% for disease in object.diseasepattern_set.all|dictsort:"name" %}
+<li><a href="{% url 'disease_detail' disease.slug %}">{{ disease.name }}</a></li>
+{% endfor %}
+</ul>
 {% endblock content %}
 
