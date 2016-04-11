@@ -3,10 +3,15 @@
 {% block content %}
 
 <h2>Etiologien</h2>
-<ul>
+<input id="search" name="search" placeholder="Suche" type="text" data-list=".list">
+<ul class="list">
 {% for etiologie in object_list %}
 <li><a href="{% url 'etiologie_detail' etiologie.slug %}">{{ etiologie.name }}</a></li>
 {% endfor %}
 </ul>
 
 {% endblock content %}
+
+{% block footer_script %}{{ block.super }}
+{% include 'django_chinese_medicine/hideseek.html' %}
+{% endblock footer_script %}
