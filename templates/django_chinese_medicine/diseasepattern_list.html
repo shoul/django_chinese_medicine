@@ -10,7 +10,7 @@
 </h2>
 <input id="search" name="search" placeholder="Suche" type="text" data-list=".list">
 <ul class="list">
-{% for disease in object_list %}
+{% for disease in object_list|dictsort:"name" %}
 <li><a href="{% url 'disease_detail' disease.slug %}">{{ disease.name }}</a></li>
 {% endfor %}
 </ul>

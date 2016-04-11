@@ -24,5 +24,5 @@ class ActivateSymptomForm(Form):
             """,
         'foo')
         self.helper.form_method = 'post'
-        self.helper.form_action = 'symptom_index'
+        self.helper.form_action = 'main'
         self.helper.add_input(Submit('submit', 'Filtern'))

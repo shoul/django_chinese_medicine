@@ -16,7 +16,7 @@
 <h3>Symptome</h3>
 
 <ul>
-{% for symptom in object.symptoms.all %}
+{% for symptom in object.symptoms.all|dictsort:"localisation" %}
 <li>
 <a href="{% url 'symptom_detail' symptom.slug %}">
     {{ symptom.localisation }}: {{ symptom.indication }}</a>
