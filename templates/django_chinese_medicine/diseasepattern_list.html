@@ -2,15 +2,21 @@
 
 {% block content %}
 
-<h2>Krankheitsmuster
+<h2>
     <a href="{% url 'disease_add' %}" >
         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
     </a>
+  Krankheitsmuster
 </h2>
-<ul>
+<input id="search" name="search" placeholder="Suche" type="text" data-list=".list">
+<ul class="list">
 {% for disease in object_list %}
 <li><a href="{% url 'disease_detail' disease.slug %}">{{ disease.name }}</a></li>
 {% endfor %}
 </ul>
 
 {% endblock content %}
+
+{% block footer_script %}{{ block.super }}
+{% include 'django_chinese_medicine/hideseek.html' %}
+{% endblock footer_script %}
