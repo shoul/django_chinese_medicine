@@ -9,7 +9,7 @@
     <a href="{% url 'disease_edit' object.slug %}" >
         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
     </a>
-    {{ object.name }}
+    Krankheitsmuster - {{ object.name }}
 </h2>
 
 
@@ -35,9 +35,20 @@
 
 <p>{{ object.pathologie }}<p/>
 
+<h3>Ätiologien</h3>
 
-<h3>Ätiologie</h3>
+<ul>
+{% for etiologie in object.etiologie.all|dictsort:"name" %}
+<li>{{ etiologie.name }}</li>
+{% endfor %}
+</ul>
 
-<p>{{ object.etiologie }}<p/>
+<h3>Therapien</h3>
+
+<ul>
+{% for therapy in object.therapy.all|dictsort:"name" %}
+<li>{{ therapy.name }}</li>
+{% endfor %}
+</ul>
 
 {% endblock content %}

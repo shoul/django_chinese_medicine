@@ -16,7 +16,7 @@
 <h3>Zugehörige Krankheitsmuster</h3> 
 
 <ul>
-{% for diseasepattern in object.diseasepattern_set.all %}
+{% for diseasepattern in object.diseasepattern_set.all|dictsort:"name" %}
 <li><a href="{% url 'disease_detail' diseasepattern.slug %}">{{ diseasepattern.name }}</a></li>
 {% endfor %}
 </ul>

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <h2>
     <a href="{% url 'etiologie_remove' object.slug %}" >
         <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
@@ -8,15 +9,26 @@
     <a href="{% url 'etiologie_edit' object.slug %}" >
         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
     </a>
-    {{ object.name }}
+    Etiologie - {{ object.name }}
 </h2>
 
 <h3>Beschreibung</h3>
 
+<p>
 {% if object.description %}
-<p>{{ object.description }}</p>
+  {{ object.description }}
 {% else %}
-Noch keine Beschreibung
+  Noch keine Beschreibung
 {% endif %}
+</p>
+
+<h3>Krankheitsmuster</h3>
+
+<ul>
+{% for disease in object.diseasepattern_set.all|dictsort:"name" %}
+<li><a href="{% url 'disease_detail' disease.slug %}">{{ disease.name }}</a></li>
+{% endfor %}
+</ul>
+
 {% endblock content %}
 
